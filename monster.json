@@ -1,41 +1,39 @@
-{
-  "monsters" : [
-    {
-      "name" : "dwarf",
-      "symbol" : "h",
-      "level" : 2
-    },
-    {
-      "name" : "kobold",
-      "symbol" : "k",
-      "level" : 2,
-      "immunity" : [ "poison", "fire" ]
-    },
-    {
-      "name" : "elf",
-      "symbol" : "@,",
-      "level" : 3,
-      "immunity" : [ "psychic" ]
-    },
-    {
-      "name" : "centipede",
-      "symbol" : "c",
-      "attack" : "bite",
-      "level" : 3
-    },
-    {
-      "name" : "ghost",
-      "symbol" : "g",
-      "level" : 4,
-      "attack" : "scare",
-      "immunity" : [ "poison", "frost" ]
-    },
-    {
-      "name" : "orc",
-      "symbol" : "o",
-      "level" : 4,
-      "attack" : "grab",
-      "immunity" : [ "poison" ]
-    }
-  ]
-}
+[
+  {
+    "name" : "dwarf",
+    "symbol" : "h",
+    "level" : 2
+  },
+  {
+    "name" : "kobold",
+    "symbol" : "k",
+    "level" : 2,
+    "immunity" : [ "poison", "fire" ]
+  },
+  {
+    "name" : "elf",
+    "symbol" : "@,",
+    "level" : 3,
+    "immunity" : [ "psychic" ]
+  },
+  {
+    "name" : "centipede",
+    "symbol" : "c",
+    "attack" : "bite",
+    "level" : 3
+  },
+  {
+    "name" : "ghost",
+    "symbol" : "g",
+    "level" : 4,
+    "attack" : "scare",
+    "immunity" : [ "poison", "frost" ]
+  },
+  {
+    "name" : "orc",
+    "symbol" : "o",
+    "level" : 4,
+    "attack" : "grab",
+    "immunity" : [ "poison" ]
+  }
+]
