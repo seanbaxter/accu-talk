@@ -28,6 +28,8 @@ enum class attack_t {
   scare,
 };
 
+namespace meta {
+
 // monsters_t exactly models the JSON schema.
 struct monster_data_t {
   std::string name;
@@ -43,6 +45,8 @@ typedef std::vector<monster_data_t> monsters_t;
 
 // Load the monster.json file at compile time
 @meta monsters_t monsters = load_from_json<monsters_t>("monsters.json");
+ 
+}
 
 // Define monster attributes.
 using symbol     [[attribute]] = char;
@@ -52,7 +56,7 @@ using attack     [[attribute]] = attack_t;
 
 // Define the monsters enum.
 enum monster_t {
-  @meta for(const auto& m : monsters) {
+  @meta for(const auto& m : meta::monsters) {
     // Attach mandatory info as C++ attributes.
     @(m.name) [[
       .symbol=m.symbol[0], 
@@ -74,7 +78,7 @@ char get_symbol(monster_t monster) {
 }
 
 int get_level(monster_t monster) {
-  return get_level(monster);
+  return get_attribute<level>(monster);
 }
 
 attack_t get_attack(monster_t monster) {

@@ -18,10 +18,10 @@ std::vector<type_t> load_file(const char* name) {
 
 @meta std::vector<char> blah = load_file<char>(__FILE__);
 
-const char embed[] { blah[:]... };
+extern const char embed[] { blah[:]... };
 
 // Also, @embed as a first class language feature.
-const char embed2[] = @embed(char, __FILE__);
+extern const char embed2[] = @embed(char, __FILE__);
 
 int main() {
   std::cout.write(embed, embed.length);
