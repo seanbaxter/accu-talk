@@ -12,31 +12,21 @@ concept Attribute = __is_attribute(type_t);
 
 template<Enum type_t>
 const char* enum_to_name(type_t e) {
-  switch(e) {
-    @meta for enum(type_t e2 : type_t)
-      case e2:
-        return @enum_name(e2);
-    default:
-      return nullptr;
-  }
+  return @enum_values(type_t) == e ...? @enum_names(type_t) : nullptr;
 }
 
 template<Attribute attrib_t, Enum type_t>
 bool test_attribute(type_t e) {
-  switch(e) {
-    @meta for enum(type_t e2 : type_t)
-      case e2:
-        return @enum_has_attribute(e2, attrib_t);
-  }
+  return @enum_values(type_t) == e ...? 
+    @enum_has_attribute(type_t, int..., attrib_t) : 
+    __builtin_unreachable();
 }
 
 template<Attribute attrib_t, Enum type_t>
 auto get_attribute(type_t e) {
-  switch(e) {
-    @meta for enum(type_t e2 : type_t)
-      case e2:
-        return @enum_attribute(e2, attrib_t);
-  }
+  return @enum_values(type_t) == e ...?
+    @enum_attribute(type_t, int..., attrib_t) :
+    __builtin_unreachable();
 }
 
 namespace game {
