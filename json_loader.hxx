@@ -67,7 +67,7 @@ void load_from_json(nlohmann::json& j, type_t& obj) {
     }
 
     // Load in each array element.
-    for(size_t i = 0; i < extent; ++i) {
+    for(size_t i : extent) {
       try {
         load_from_json(j[i], obj[i]); 
 
@@ -83,7 +83,7 @@ void load_from_json(nlohmann::json& j, type_t& obj) {
     // Resize the object's vector and call load_from_json on each element.   
     size_t size = j.size();
     obj.resize(size);
-    for(size_t i = 0; i < size; ++i) {
+    for(size_t i : size) {
       try {
         load_from_json(j[i], obj[i]);
 
@@ -108,7 +108,7 @@ void load_from_json(nlohmann::json& j, type_t& obj) {
       throw std::runtime_error("expected array");
 
     size_t size = j.size();
-    for(size_t i = 0; i < size; ++i) {
+    for(size_t i : size) {
       typename type_t::value_type value { };
 
       try {

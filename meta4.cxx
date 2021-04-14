@@ -5,11 +5,8 @@ const char* enum_to_string(enum_t e) {
   switch(e) {
     @meta for enum(enum_t e2 : enum_t) {
       case e2:
-        // @enum_name may only be called on constant values, like e2, not
-        // runtime values like e.
         return @enum_name(e2);
     }
-
     default:
       return nullptr;
   }

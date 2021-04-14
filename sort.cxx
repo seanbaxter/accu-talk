@@ -35,11 +35,13 @@ using filter_and_sort_t = typename detail::filter_and_sort_t<list_t>::result;
 struct Z { };
 
 int main( ) {
-  typedef filter_and_sort_t<typelist_t<int[2], Z, int[1], int[4], int[3]>> sorted;
+  typedef filter_and_sort_t<
+    // Filter and sort these types!
+    typelist_t<int[2], Z, int[1], int[4], int[3]>
+  > sorted;
+
   static_assert(std::is_same_v<
     sorted,
     typelist_t<int[4], int[3], int[2], int[1]>
   >);
-
-  @meta std::cout<< @type_string(sorted)<< "\n";
 }

@@ -72,9 +72,6 @@ static constexpr bool has_access_v<access_variant_t<variant_t>> = true;
 
 
 // Dispatch call
-template<typename func_t>
-void call(func_t func) { func(); }
-
 template<typename func_t, typename... args_t>
 void call(func_t func, args_t&&... args) {
   // Get an outer product of calls.
@@ -85,9 +82,10 @@ void call(func_t func, args_t&&... args) {
   int current = 0;
   @meta int adjustment = 1;
   @meta for(int i : sizeof...args) {
-    if constexpr(has_access_v<args_t...[i]>)
+    if constexpr(has_access_v<args_t...[i]>) {
       current += args...[i].get_index() * adjustment;
-    @meta adjustment *= counts[i];
+      @meta adjustment *= counts[i];
+    }
   }
 
   switch(current) {
@@ -110,8 +108,8 @@ void call(func_t func, args_t&&... args) {
 
 int main() {
 
-  auto output_values = []<typename... args_t>(auto& os, const args_t&... args) {
-    os<< int...<< ": "<< args<< " ("<< @type_string(args_t)<< ")\n"...;
+  auto output_values = []<typename... args_t>(const args_t&... args) {
+    std::cout<< int...<< ": "<< args<< " ("<< @type_string(args_t)<< ")\n"...;
   };
 
   auto t1 = std::make_tuple('a', 2, "A string");
@@ -122,7 +120,6 @@ int main() {
 
   // The imperative visitor.
   call(output_values, 
-    std::cout, 
     32,
     "Yo there",
     access_tuple(t1, 1),
