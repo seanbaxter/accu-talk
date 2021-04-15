@@ -14,7 +14,9 @@ void bar() {
 
 int main() {
   // meta statements in templates are executed during instantiation.
-  foo<char, short, int> obj;
+  foo<char, short, int> obj1;
+  foo<double[3], void*> obj2;
 
   bar<long, long long, __int128>();
+  bar<std::istream&, float()>();
 }

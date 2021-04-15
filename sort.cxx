@@ -44,4 +44,6 @@ int main( ) {
     sorted,
     typelist_t<int[4], int[3], int[2], int[1]>
   >);
+
+  @meta std::cout<< @type_string(sorted, true)<< "\n";
 }
