@@ -21,6 +21,7 @@ circle commit2.cxx && ./commit2
 
 circle sort.cxx && ./sort
 
+circle tuple.cxx && ./tuple
 circle call.cxx && ./call
 
 circle visit.cxx && ./visit

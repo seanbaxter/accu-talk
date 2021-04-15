@@ -118,12 +118,17 @@ int main() {
   std::variant<char, int, const char*> v1 = 'Q';
   std::variant<float, bool, std::string> v2 = "A variant";
 
+  // Selectors for the tuples. Selectors for the variants are built into the
+  // variant.
+  int i1 = 1;
+  int i2 = 2;
+
   // The imperative visitor.
   call(output_values, 
     32,
     "Yo there",
-    access_tuple(t1, 1),
-    access_tuple(t2, 2),
+    access_tuple(t1, i1),
+    access_tuple(t2, i2),
     access_variant(v1),
     access_variant(v2)
   );
